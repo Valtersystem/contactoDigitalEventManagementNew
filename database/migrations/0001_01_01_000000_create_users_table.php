@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+
+            // 🔥 ADICIONANDO O CAMPO DE FUNÇÃO (ADMIN OU MANAGER)
+            $table->string('role')->default('manager');
+            // Se quiser que o padrão seja admin, é só me avisar.
+
             $table->rememberToken();
             $table->timestamps();
         });
