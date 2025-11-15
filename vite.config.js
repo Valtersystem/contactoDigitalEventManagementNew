@@ -4,9 +4,20 @@ import vue from '@vitejs/plugin-vue';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+    server: {
+        host: '0.0.0.0',
+        port: 5173,
+        strictPort: true,
+        hmr: {
+            host: '192.168.1.75', // <-- teu IP local
+        },
+    },
     plugins: [
         laravel({
-            input: 'resources/js/app.ts',
+            input: [
+                'resources/css/app.css',
+                'resources/js/app.ts',
+            ],
             refresh: true,
         }),
 
@@ -22,10 +33,11 @@ export default defineConfig({
         VitePWA({
             registerType: 'autoUpdate',
 
-            includeAssets: [
-                'favicon.ico',
-                'robots.txt',
-            ],
+            devOptions: {
+                enabled: true, // <-- ESSENCIAL para funcionar no telemóvel
+            },
+
+            includeAssets: ['favicon.ico', 'robots.txt'],
 
             manifest: {
                 name: 'Contacto Digital',
@@ -51,7 +63,7 @@ export default defineConfig({
                         src: '/pwa/icon-512.png',
                         sizes: '512x512',
                         type: 'image/png',
-                        purpose: 'any maskable',
+                        purpose: 'maskable',
                     },
                 ],
             },
