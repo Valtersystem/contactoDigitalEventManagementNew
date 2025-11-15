@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer base {
+    :root {
+        --color-background: 255 255 255; /* Cor: white */
+        --color-surface: 249 250 251;    /* Cor: gray-50 */
+        --color-primary: 79 70 229;      /* Cor: indigo-600 */
+        --color-secondary: 234 179 8;    /* Cor: yellow-500 */
+        --color-text-primary: 17 24 39;  /* Cor: gray-900 */
+        --color-text-secondary: 55 65 81;/* Cor: gray-700 */
+        --color-action: 255 255 255;     /* Cor: white (texto do botão primário) */
+    }
+
+    .dark {
+        --color-background: 17 24 39;    /* Cor: gray-900 */
+        --color-surface: 31 41 55;       /* Cor: gray-800 */
+        --color-primary: 99 102 241;     /* Cor: indigo-500 */
+        --color-secondary: 202 138 4;    /* Cor: yellow-600 */
+        --color-text-primary: 243 244 246;/* Cor: gray-100 */
+        --color-text-secondary: 156 163 175;/* Cor: gray-400 */
+        --color-action: 255 255 255;     /* Cor: white (texto do botão primário) */
+    }
+
+    body {
+        @apply bg-background text-text-primary transition-colors duration-200;
+    }
+}
